@@ -45,9 +45,9 @@ export default {
   components: {
     detail
   },
+  // en caso de cambiar de pagina o querer ver mas peliculas por página llamamos a la funcion getResult nuevamente
   watch: {
     page() {
-      console.log('tambien llega');
       this.getResults()
     },
     perPage() {
@@ -72,6 +72,7 @@ export default {
 
   methods: {
     getResults() {
+      //tenemos una llamada asincrona que me devuelbe las películas ya páginadas
       axios.get('/films', { params: { page: this.page, perPage: this.perPage } })
         .then(response => {
           this.lastPage = response.data.last_page

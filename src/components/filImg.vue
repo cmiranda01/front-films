@@ -28,6 +28,7 @@ export default {
     }
   },
   watch: {
+    // cuando esta variable cambie llamaremos a find y ahí traeremos los datos para mostrar el img
     showMenu(val) {
       if (val) {
         this.find()
@@ -39,7 +40,6 @@ export default {
       axios.get(`/${this.id}`)
         .then(response => {
           this.data = response.data;
-          // console.log(response.data);
         })
         .catch(error => {
           console.log(error)
